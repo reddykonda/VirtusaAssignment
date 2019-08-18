@@ -2,12 +2,16 @@ package com.virtusa.numbertoword.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.virtusa.exception.InvalidFieldException;
 import com.virtusa.numbertoword.service.NumberToWordService;
 
 @Service
 public class NumberToWordServiceImpl implements NumberToWordService{
 
-	public String getNumberToWord(final Integer number) {
+	public String getNumberToWord(final Integer number) throws InvalidFieldException{
+		if(number == null) {
+			throw new InvalidFieldException("Invalid Number Field");
+		}
 		return convert(number);
 	}
 	   private static final String[] specialNames = {

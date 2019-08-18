@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.virtusa.exception.InvalidFieldException;
 import com.virtusa.numbertoword.service.NumberToWordService;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,8 @@ public class NumberToWordApi {
 
 	
 	@GetMapping(value = "/numberToWord/{number}")
-	public ResponseEntity<String> getNumberToWord(@PathVariable("number") final Integer number){
+	public ResponseEntity<String> getNumberToWord(@PathVariable("number") final Integer number) 
+			throws InvalidFieldException{
 		return ResponseEntity.ok(numberToWordService.getNumberToWord(number));
 	}
 }
